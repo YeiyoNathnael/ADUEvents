@@ -1,0 +1,25 @@
+# Binaries
+bin/
+*.exe
+
+# Go build cache
+/tmp/
+
+# Node / Tailwind
+node_modules/
+.npm/
+
+# Generated Templ files
+**/*_templ.go
+
+# Tailwind output
+static/css/output.css
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
