@@ -1,27 +1,28 @@
 # ============================================================
 # ADUEvents — Go / Templ / HTMX / Alpine.js / TailwindCSS
 # ============================================================
-
-APP_NAME  := aduevents
-BIN_DIR   := bin
-MAIN_PKG  := ./cmd/server
-
 .PHONY: all build run dev templ css clean tidy help
+
+APP_NAME := server
+BIN_DIR := ./tmp/bin
+BIN_PATH := $(BIN_DIR)/$(APP_NAME)
+CMD_PATH := ./cmd/server
 
 ## all: build the application (default)
 all: build
 
 ## build: compile the Go binary
 build:
-	go build -o $(BIN_DIR)/$(APP_NAME) $(MAIN_PKG)
+	@mkdir -p $(BIN_DIR)
+	go build -o $(BIN_PATH) $(CMD_PATH)
 
 ## run: build and run the application
 run: build
-	./$(BIN_DIR)/$(APP_NAME)
+	$(BIN_PATH)
 
 ## dev: run with live-reload using Air (https://github.com/air-verse/air)
 dev:
-	air
+	air -c .air.toml
 
 ## templ: generate Go code from .templ files
 templ:
