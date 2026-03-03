@@ -7,11 +7,11 @@ templ Index(){
 
   <html>
     <head>
-        
+        <link rel="stylesheet" href="/assets/css/output.css">
     </head>
 
     <body>
-        @button.Button(){
+      @button.Button(button.Props{Class: "bg-red-500 text-white hover:bg-red-500/90"}){
           Button
         }
     </body>

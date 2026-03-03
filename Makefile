@@ -28,8 +28,8 @@ build: fmt vet
 run: build
 	$(BIN_PATH)
 
-## dev: run with live-reload using Air (https://github.com/air-verse/air)
-dev:
+## dev: build css + generate templ, then run Air live-reload
+dev: css templ
 	air -c .air.toml
 
 ## templ: generate Go code from .templ files
