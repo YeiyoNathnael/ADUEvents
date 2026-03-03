@@ -1,7 +1,7 @@
 # ============================================================
 # ADUEvents — Go / Templ / HTMX / Alpine.js / TailwindCSS
 # ============================================================
-.PHONY: all build run dev templ css clean tidy help
+.PHONY: all build run dev templ css watch-css fmt vet clean tidy help
 
 APP_NAME := server
 BIN_DIR := ./tmp/bin
@@ -11,8 +11,16 @@ CMD_PATH := ./cmd/server
 ## all: build the application (default)
 all: build
 
+## fmt: format Go source files
+fmt:
+	go fmt ./...
+
+## vet: run Go static analysis
+vet:
+	go vet ./...
+
 ## build: compile the Go binary
-build:
+build: fmt vet
 	@mkdir -p $(BIN_DIR)
 	go build -o $(BIN_PATH) $(CMD_PATH)
 
